@@ -226,12 +226,12 @@ SAFE = "SAFE"
 
 
 @node(name="security_checkpoint", rerun_on_resume=True)
-async def security_checkpoint(ctx: Context) -> None:
+async def security_checkpoint(ctx: Context, node_input: str) -> None:
     """Security checkpoint: PII scrubbing, injection detection, audit logging."""
     # Get the raw user message from state or from incoming node_input
     raw_input: str = ctx.state.get("user_message", "")
-    if not raw_input and ctx.node_input:
-        raw_input = str(ctx.node_input)
+    if not raw_input and node_input:
+        raw_input = str(node_input)
 
     ctx.state["user_message"] = raw_input
     ctx.state["session_timestamp"] = datetime.datetime.utcnow().isoformat()
@@ -361,5 +361,5 @@ root_agent = language_buddy_workflow
 
 app = App(
     root_agent=language_buddy_workflow,
-    name="language-learning-buddy",
+    name="app",  # Must match the module/directory name passed to `adk web app`
 )

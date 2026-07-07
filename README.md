@@ -119,7 +119,7 @@ graph TD
    git add .
    git commit -m "Initial commit: language-learning-buddy ADK agent"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/language-learning-buddy.git
+   git remote add origin https://github.com/Nirvik-49/language-learning-buddy.git
    git push -u origin main
    ```
 
